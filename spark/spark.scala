@@ -5,11 +5,8 @@ import org.apache.spark.mllib.linalg.Vectors
 import org.apache.spark.mllib.regression.LabeledPoint
 import org.apache.spark.mllib.util.MLUtils
 import org.apache.spark.mllib.classification.ANNClassifier
-val train = MLUtils.loadLibSVMFile(sc, "hdfs://mercado-9.hpl.hp.com:9000/user/hduser/input/mnist8m.scale").persist
-train.count
-
 // huge topology
-val train = MLUtils.loadLibSVMFile(sc, "hdfs://mercado-9.hpl.hp.com:9000/user/hduser/input/mnist.scale")
+val train = MLUtils.loadLibSVMFile(sc, "hdfs://my.server:9000/data/mnist.scale")
 val train5 = train.repartition(5)
 train5.persist
 train5.count
