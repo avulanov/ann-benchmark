@@ -8,7 +8,7 @@ The goal is to benchmark the library, compare it with the other tools and test s
     - 60000 training set, 10000 test set 
     - Format: depends on the tool
   - Network: 
-    - 6-layer NN 784-2500-2000-1500-1000-500-10
+    - 6-layer NN 784-2500-2000-1500-1000-500-10 http://arxiv.org/pdf/1003.0358v1.pdf
     - ~12M weights total
 
 The intention is to test a big model. Data is small so the time needed to read the data can be ignored. 
