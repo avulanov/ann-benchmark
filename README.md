@@ -27,6 +27,12 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/openblas:/gcc-4.8.2/lib
 ### Caffe
   - Download Caffe
   - Configure `Makefile.config` to point to the same OpenBLAS lib (and CUDA) as for Spark
+  - Change Solver to Double precision `tools/caffe.cpp`:
+```
+void CopyLayers(caffe::Solver<double>* solver, const std::string& model_list) {
+  shared_ptr<caffe::Solver<double> >
+    solver(caffe::GetSolver<double>(solver_param));
+```
   - Compile Caffe
   - Set environment variable:
 ```    
