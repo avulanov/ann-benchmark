@@ -10,6 +10,8 @@ The goal is to benchmark the library, compare it with the other tools and test s
   - Network: 
     - 6-layer NN 784-2500-2000-1500-1000-500-10 http://arxiv.org/pdf/1003.0358v1.pdf
     - ~12M weights total
+  - Metrics:
+    - Time needed for one epoch including gradient update 
 
 The intention is to test a big model. Data is small so the time needed to read the data can be ignored. 
 
@@ -59,3 +61,20 @@ $CAFFE/examples/mnist/create_mnist.sh
 ```
 $CAFFE/build/tools/caffe train --solver=mnist-lmdb-5h.solver
 ```
+## Benchmark
+  - Hardware/Software setup:
+    - Intel(R) Xeon(R) CPU E31240 @ 3.30GHz, 16GB RAM 
+    - RedHat 6.4, OpenBLAS
+    - Total 6 machines
+    - Spark: one master, 5 workers
+
+Preliminary results (s):
+
+Nodes	| ANN-total	| ANN-compute	| Caffe	| Caffe60K |
+------|-----------|-------------|-------|----------|
+5 |	29 |	21 |	62 | 56 |
+4	| 27 |	24	| 62	| 56 |
+3 |	35.2 |	33 |	62 |	56 |
+2	| 47 |	44	| 62	| 56 |
+1	| 86	| 84	| 62	| 56 |
+
