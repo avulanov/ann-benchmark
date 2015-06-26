@@ -1,7 +1,19 @@
 # ann-benchmark
-Benchmarks of artificial neural network library for Spark MLlib
+Benchmarks of artificial neural network implementation for Spark MLlib https://github.com/avulanov/spark/tree/ann-interface-gemm. 
 
-##Prerequisites
+## Introduction
+The goal is to benchmark the library, compare it with the other tools and test scalability with the number of nodes in the cluster.
+  - Dataset: 
+    - MNIST handwritten digits http://yann.lecun.com/exdb/mnist/
+    - 60000 training set, 10000 test set 
+    - Format: depends on the tool
+  - Network: 
+    - 6-layer NN 784-2500-2000-1500-1000-500-10
+    - ~12M weights total
+
+The intention is to test a big model. Data is small so the time needed to read the data can be ignored. 
+
+## Prerequisites
 ### OpenBLAS
   - Download, compile and install OpenBLAS https://github.com/xianyi/OpenBLAS
   - Add OpenBLAS to your library path:
