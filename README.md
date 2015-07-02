@@ -16,6 +16,12 @@ The goal is to benchmark the library, compare it with the other tools and test s
 The intention is to test a big model. Data is small so the time needed to read the data can be ignored. 
 
 ## Prerequisites
+### GCC 4.8.2
+RedHat 6.x has an older GCC compiler that has libgfortran library that is incompatible with netlib-java wrappers. Check GCC version: `gcc -v`. New GCC should be ALWAYS in your path:
+```
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/new/gcc/lib64
+```
+
 ### OpenBLAS
   - Download, compile and install OpenBLAS https://github.com/xianyi/OpenBLAS
   - Add OpenBLAS to your library path:
@@ -26,11 +32,24 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/openblas
 ```
 ln -s libopenblas.so libblas.so.3
 ```
-  - You need to have gcc libs not less than v.4.8 in your library path `gcc -v`
+  - To use OpenBLAS, add it to your library path. Make sure there is no other folder with `libblas.so.3` in your path.
 ```
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/openblas:/gcc-4.8.2/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/openblas
 ```
-
+### CUDA and NVBLAS (for GPU)
+  - Download and install the latest CUDA and GPU driver (usually comes with CUDA)
+  - NB! you need the reference CBLAS library to run NVBLAS through Spark
+    - RedHat and Fedora
+      - Download and compile CBLAS as a shared library: http://avulanov.blogspot.com/2015/03/cblas-compilation-as-shared-library.html
+      - Create symlink to CBLAS within its folder
+`ln -s cblas_LINUX.so libblas.so.3`
+    - Ubuntu etc. `sudo apt-get install blas`
+    - Make sure that the installed library has CBLAS symbols `objdump -T libblas.so.3 | grep "cblas"`
+  - To use NVBLAS, add CBLAS and CUDA to your library path. Also, preload NVBLAS symbols (it is better to do this right before launching Spark otherwise all your shell commands will go through NVBLAS causing errors). Make sure there is no other folder with `libblas.so.3` in your path.
+```
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/cblas:/your/cuda/lib64
+export LD_PRELOAD=/your/cuda/lib64/libnvblas.so
+```
 ## Benchmark
 ### Spark
   - Clone Spark from https://github.com/avulanov/spark/tree/ann-interface-gemm
