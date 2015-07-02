@@ -44,7 +44,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/openblas
       - Create symlink to CBLAS within its folder
 `ln -s cblas_LINUX.so libblas.so.3`
     - Ubuntu etc. `sudo apt-get install blas`
-    - Make sure that the installed library has CBLAS symbols `objdump -T libblas.so.3 | grep "cblas"`
+      - Make sure that the installed library has CBLAS symbols `objdump -T libblas.so.3 | grep "cblas"`
   - To use NVBLAS, add CBLAS and CUDA to your library path. Also, preload NVBLAS symbols (it is better to do this right before launching Spark otherwise all your shell commands will go through NVBLAS causing errors). Make sure there is no other folder with `libblas.so.3` in your path.
 ```
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/cblas:/your/cuda/lib64
