@@ -1,12 +1,12 @@
-net: "mnist-lmdb-5h.conf"
+net: "mnist-lmdb-5h-10K.conf"
 test_iter: 10
 test_interval: 1000
 base_lr: 0.03
 momentum: 0.9
 #weight_decay: 0.00001
 lr_policy: "fixed"
-display: 10
-max_iter: 300
-solver_mode: GPU
+display: 1
+max_iter: 30
+solver_mode: CPU
 random_seed: 0 # Just for reproducible purpose
 
