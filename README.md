@@ -103,3 +103,5 @@ Nodes	| ANN-total	| ANN-compute	| Caffe	| Caffe60K |
 2	| 47 |	44	| 62	| 56 |
 1	| 86	| 84	| 62	| 56 |
 
+The lastest results are in the spreadsheet: https://docs.google.com/spreadsheets/d/13U1fwF5-h90X-VeF01dOT-IlJtwYa1AsRtCBjAkSqKI/edit?usp=sharing
+
