@@ -68,9 +68,7 @@ export LD_PRELOAD=/your/cuda/lib64/libnvblas.so
   - Configure `Makefile.config` to point to the same OpenBLAS lib (and CUDA) as for Spark
   - Change Solver to Double precision `tools/caffe.cpp`:
 ```
-void CopyLayers(caffe::Solver<double>* solver, const std::string& model_list) {
-  shared_ptr<caffe::Solver<double> >
-    solver(caffe::GetSolver<double>(solver_param));
+ sed -i "s/float/double/g" caffe.cpp
 ```
   - Compile Caffe
   - Set environment variable:
