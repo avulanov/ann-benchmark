@@ -8,7 +8,7 @@ import org.apache.spark.mllib.classification.ANNClassifier
 // maximum number of worker nodes in cluster
 val numNodes = 5
 // batch size, ~10K is good for GPU
-val batchSize = 10000
+val batchSize = 1000
 // number of iterations to run
 val numIterations = 5
 val train = MLUtils.loadLibSVMFile(sc, "/mnist.scale")
