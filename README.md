@@ -1,5 +1,7 @@
 # ann-benchmark
-Benchmarks of artificial neural network implementation for Spark MLlib https://github.com/avulanov/spark/tree/ann-interface-gemm. 
+Benchmarks of artificial neural network implementation for 
+  - Spark MultilayerPerceptron https://github.com/apache/spark
+  - Old version for Spark MLlib https://github.com/avulanov/spark/tree/ann-interface-gemm. 
 
 ## Introduction
 The goal is to benchmark the library, compare it with the other tools and test scalability with the number of nodes in the cluster.
@@ -58,10 +60,14 @@ export LD_PRELOAD=/your/cuda/lib64/libnvblas.so
 ```
 ## Benchmark
 ### Spark
-  - Clone Spark from https://github.com/avulanov/spark/tree/ann-interface-gemm
+  - Clone Spark from 
+    - https://github.com/apache/spark or
+    - https://github.com/avulanov/spark/tree/ann-interface-gemm
   - Compile Spark with `-Pnetlib-lgpl` flag to use native BLAS
   - Deploy Spark on N-node cluster
-  - Download mnist dataset: http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/mnist.scale.bz2 
+  - Download and unzip mnist dataset: http://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass/mnist.scale.bz2 
+  - Run the benchmark using the provided scala code:
+    - spark-latest.scala or spark.scala
 
 ### Caffe
   - Download Caffe
